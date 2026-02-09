@@ -1,103 +1,143 @@
-.hero {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #686868; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
-
-.profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; 
-    object-fit: cover;
-    border: 5px solid #3498db; 
-    margin-bottom: 20px;
-}
-
-.tagline {
-    font-size: 1.2em;
-    color: #7f8c8d; 
-    font-style: italic;
-
-  }*, *::before, *::after {
+/* Reset and base styles */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* Basic body styling */
 body {
-    font-family: 'Roboto', sans-serif; 
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: #FFFFFF;
+    line-height: 1.6;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-    background-color: #f4f7f6; 
-    color: #333; 
+    animation: fadeIn 1s ease-in;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-h1, h2 {
+.content-wrapper {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px; /* Added rounding */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.8s ease-out;
+    transition: transform 0.3s ease;
+}
+
+.content-wrapper:hover {
+    transform: translateY(-48px); /* Move up by 0.5 inch (48px) on hover */
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+h1 {
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #2c3e50; 
-}
-
-h2 {
-    border-bottom: 2px solid #3498db; 
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    display: inline-block; 
-}
-.content {
-    max-width: 900px;
-    margin: 40px auto; 
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr; 
-    gap: 40px;
-}
-
-.about-section {
-    
-}
-
-.skills-list {
-    list-style: none; 
-    padding: 0;
-}
-
-.skills-list li {
-    background-color: #ffffff; 
-    color: #2c3e50;
-    padding: 8px 15px;
-    margin-bottom: 10px;
-    border-radius: 20px; 
-    font-weight: 400;
-    transition: background-color 0.3s;
-}
-
-.skills-list li:hover {
-    background-color: #3498db; 
-    color: #ffffff;
-}
-.contact-footer {
+    margin-bottom: 0.5rem;
     text-align: center;
-    padding: 30px 20px;
-    background-color: #2c3e50; 
-    color: #ecf0f1; 
-    margin-top: 40px;
+    animation: textGlow 2s ease-in-out infinite alternate;
 }
 
-.contact-footer a {
-    color: #3498db; 
+@keyframes textGlow {
+    from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+}
+
+.profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.1);
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.link-group {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    text-align: center;
+}
+
+.link-group a {
+    color: #EBEBEB;
     text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
     margin: 0 10px;
-    font-weight: 700;
-    transition: color 0.3s;
+    display: inline-block;
 }
 
-.contact-footer a:hover {
-    color: #e74c3c; 
+.link-group a:hover {
+    color: #888888;
+    text-decoration: underline;
+    transform: translateY(-2px);
 }
-@media (max-width: 768px) {
-    .content {
-        grid-template-columns: 1fr; 
+
+.link-group span {
+    color: #EBEBEB;
+}
+
+#gif-container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#gif-container img {
+    width: 88px;
+    height: 31px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 5px; /* Slight rounding for gifs */
+}
+
+#gif-container img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .content-wrapper {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px; /* Adjusted rounding for mobile */
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .profile-photo {
+        width: 60px;
+        height: 60px;
     }
 }
